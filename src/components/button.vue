@@ -7,7 +7,7 @@
 export default {
     name: 'YaButton',
     props: {
-        // 按钮类型
+        // 按钮类型111
         type: {
             type: String,
             default: 'default'
