@@ -1,6 +1,9 @@
 <template>
-    <button class="ya-button" :class="[`ya-button--${type}`, { 'is-plain': plain, 'is-round': round }]">
-        <slot></slot>
+    <button class="ya-button" :class="[`ya-button--${type}`, { 'is-plain': plain, 'is-round': round, 'is-circle': circle}]" @click="handleClick">
+        <i :class="icon" v-if="icon"></i>
+        <span v-if="$slots && $slots.default">
+            <slot></slot>
+        </span>
     </button>
 </template>
 <script>
@@ -21,6 +24,22 @@ export default {
         round: {
             type: Boolean,
             default: false,
+        },
+        // 圆形按钮
+        circle: {
+            type: Boolean,
+            default: false,
+        },
+        // 按钮内图标
+        icon: {
+            type: String,
+            default: ''
+        }
+    },
+    methods: {
+        handleClick(event) {
+            // 处理事件
+            this.$emit('click', event);
         }
     }
 }
@@ -169,6 +188,15 @@ export default {
 .ya-button.is-round {
     border-radius: 20px;
     padding: 12px 23px;
+}
+// 圆形
+.ya-button.is-circle {
+    border-radius: 50%;
+    padding: 12px;
+}
+// 图标和文字间距
+.ya-button [class*='ya-icon-']+span {
+    margin-left: 5px;
 }
 
 </style>
