@@ -36,6 +36,20 @@
       <ya-button type="warning" disabled>警告</ya-button>
       <ya-button type="danger" disabled>危险</ya-button>
     </div>
+    <!-- 弹窗 -->
+    <ya-button @click="visible = true">打开弹窗</ya-button>
+    <!-- sync的用法 -->
+    <!-- 等同于  <ya-dialog width="60%" :visible="visible" @update:visible="">-->
+    <ya-dialog width="60%" :visible.sync="visible">
+      <template v-slot:title>
+        <h4>slot的用法</h4>
+      </template>
+      <span>这是内容</span>
+      <template v-slot:footer>
+          <ya-button style="margin-right: 10px;" @click="visible = false">取消</ya-button>
+          <ya-button type="primary" @click="visible = false">确定</ya-button>
+      </template>
+    </ya-dialog>
   </div>
 </template>
 
@@ -43,10 +57,15 @@
 
 export default {
   name: 'App',
+  data() {
+    return {
+      visible: false,
+    }
+  },
   methods: {
     test() {
       console.log('测试')
-    }
+    },
   }
 }
 </script>
@@ -55,7 +74,7 @@ export default {
 .row {
   margin-bottom: 20px;
   .ya-button {
-    margin-right: 10px;
+    margin-right: 20px;
   }
 }
 
