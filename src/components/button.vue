@@ -1,5 +1,9 @@
 <template>
-    <button class="ya-button" :class="[`ya-button--${type}`, { 'is-plain': plain, 'is-round': round, 'is-circle': circle}]" @click="handleClick">
+    <button 
+    class="ya-button" 
+    :class="[`ya-button--${type}`, { 'is-plain': plain, 'is-round': round, 'is-circle': circle, 'is-disabled': disabled}]"
+    @click="handleClick"
+    :disabled="disabled">
         <i :class="icon" v-if="icon"></i>
         <span v-if="$slots && $slots.default">
             <slot></slot>
@@ -34,6 +38,10 @@ export default {
         icon: {
             type: String,
             default: ''
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     methods: {
@@ -95,6 +103,12 @@ export default {
         color: #fff;
     }
 }
+.ya-button--primary.is-disabled {
+    color: #fff;
+    background-color: #a0cfff;
+    border-color: #a0cfff;
+    cursor: not-allowed;
+}
 .ya-button--success {
     color: #fff;
     background-color: #67c23a;
@@ -116,6 +130,12 @@ export default {
         border-color: #67c23a;
         color: #fff;
     }
+}
+.ya-button--success.is-disabled {
+    color: #fff;
+    background-color: #b3e19d;
+    border-color: #b3e19d;
+    cursor: not-allowed;
 }
 
 .ya-button--info {
@@ -140,6 +160,12 @@ export default {
         color: #fff;
     }
 }
+.ya-button--info.is-disabled {
+    color: #bcbec2;
+    background-color: #f4f4f5;
+    border-color: #e9e9eb;
+    cursor: not-allowed;
+}
 .ya-button--warning {
     color: #fff;
     background-color: #e6a23c;
@@ -162,6 +188,12 @@ export default {
         color: #fff;
     }
 }
+.ya-button--warning.is-disabled {
+    color: #f0c78a;
+    background-color: #fdf6ec;
+    border-color: #faecd8;
+    cursor: not-allowed;
+}
 .ya-button--danger {
     color: #fff;
     background-color: #f56c6c;
@@ -183,6 +215,13 @@ export default {
         border-color: #f56c6c;
         color: #fff;
     }
+}
+// cursor: not-allowed;
+.ya-button--danger.is-disabled {
+    color: #fff;
+    background-color: #fab6b6;
+    border-color: #fab6b6;
+    cursor: not-allowed;
 }
 // 圆角
 .ya-button.is-round {

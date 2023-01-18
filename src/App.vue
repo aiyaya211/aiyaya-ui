@@ -28,6 +28,14 @@
       <ya-button type="warning" circle icon="ya-icon-xiazai"></ya-button>
       <ya-button type="danger" circle icon="ya-icon-chongzhijiaofei"></ya-button>
     </div>
+    <!--  disabled -->
+    <div class="row">
+      <ya-button type="primary" disabled>主要</ya-button>
+      <ya-button type="success" disabled>成功</ya-button>
+      <ya-button type="info" disabled>信息</ya-button>
+      <ya-button type="warning" disabled>警告</ya-button>
+      <ya-button type="danger" disabled>危险</ya-button>
+    </div>
   </div>
 </template>
 
