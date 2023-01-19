@@ -1,27 +1,29 @@
 <template>
     <!-- 对话框的遮罩 -->
-    <div class="ya-dialog__wrapper" style="z-index: 2002" v-show="visible" @click.self="handleClick">
-        <div class="ya-dialog" :style="{marginTop: top, width: width}">
-            <!-- 头部 -->
-            <div class="ya-dialog__header">
-                <slot name="title">
-                    <span class="ya-dialog__title">
-                        {{title}}
-                    </span>
-                </slot>
-                <button class="ya-dialog__headerbtn" @click="handleClick"><i class="ya-icon-close-little"></i></button>
-            </div>
-            <div class="ya-dialog__body">
-                <!-- 默认插槽 -->
-                <slot></slot>
-            </div>
-            <!-- 底部 -->
-            <div class="ya-dialog__footer" v-if="$slots.footer">
-                <slot name="footer"></slot>
+    <!-- 动画 -->
+    <transition name="dialog-transition">
+        <div class="ya-dialog__wrapper" style="z-index: 2002" v-show="visible" @click.self="handleClick">
+            <div class="ya-dialog" :style="{marginTop: top, width: width}">
+                <!-- 头部 -->
+                <div class="ya-dialog__header">
+                    <slot name="title">
+                        <span class="ya-dialog__title">
+                            {{title}}
+                        </span>
+                    </slot>
+                    <button class="ya-dialog__headerbtn" @click="handleClick"><i class="ya-icon-close-little"></i></button>
+                </div>
+                <div class="ya-dialog__body">
+                    <!-- 默认插槽 -->
+                    <slot></slot>
+                </div>
+                <!-- 底部 -->
+                <div class="ya-dialog__footer" v-if="$slots.footer">
+                    <slot name="footer"></slot>
+                </div>
             </div>
         </div>
-
-    </div>
+    </transition>
 </template>
 <script>
 export default {
@@ -103,6 +105,12 @@ export default {
     padding: 10px 20px 20px;
     text-align: right;
     box-sizing: border-box;
+}
+.dialog-transition-enter-active, .dialog-transition-leave-active {
+  transition: opacity .5s;
+}
+.dialog-transition-enter, .dialog-transition-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 </style>
