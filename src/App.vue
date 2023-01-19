@@ -37,7 +37,9 @@
       <ya-button type="danger" disabled>危险</ya-button>
     </div>
     <!-- 弹窗 -->
-    <ya-button @click="visible = true">打开弹窗</ya-button>
+    <div class="row">
+      <ya-button @click="visible = true">打开弹窗</ya-button>
+    </div>
     <!-- sync的用法 -->
     <!-- 等同于  <ya-dialog width="60%" :visible="visible" @update:visible="">-->
     <ya-dialog width="60%" :visible.sync="visible">
@@ -50,6 +52,10 @@
           <ya-button type="primary" @click="visible = false">确定</ya-button>
       </template>
     </ya-dialog>
+    <!-- 输入框 -->
+    <div class="row">
+      <ya-input placeholder="试一试" v-model="content"  />
+    </div>
   </div>
 </template>
 
@@ -60,6 +66,7 @@ export default {
   data() {
     return {
       visible: false,
+      content: '888'
     }
   },
   methods: {
@@ -77,5 +84,7 @@ export default {
     margin-right: 20px;
   }
 }
-
-</style>
+// .ya-input {
+//    width: 180px;
+// }
+</style>>
