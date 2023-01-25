@@ -1,5 +1,5 @@
 <template>
-    <div class="ya-input">
+    <div class="ya-input" :class="{'ya-input--suffix': showIcon}">
         <input 
         class="ya-input__inner" 
         :class="{'is-disabled': disabled}"
@@ -9,8 +9,11 @@
         :name="name"
         :value="value"
         @input="changeVal"
-        :clearable="clearable"
         />
+        <span class="ya-input__suffix" v-if="showIcon">
+            <i v-if="clearable && value" class="ya-icon-qingchu ya-input__icon"  @click="clearContent"/>
+            <i v-if="showPassword" class="ya-input__icon ya-icon-yanjing_yincang_o"/>
+        </span>
     </div>
 </template>
 <script>
@@ -40,11 +43,26 @@ export default {
         clearable: {
             type: Boolean,
             default: false,
+        },
+        showPassword: {
+            type: Boolean,
+            default: false,
         }
+    },
+    computed: {
+        showIcon() {
+            return this.clearable || this.showPassword;
+        }
+
     },
     methods: {
         changeVal(e) {
             this.$emit('input', e.target.value)
+        },
+        clearContent() {
+            console.log('clearContent')
+            // 清空数据
+            this.$emit('input', '')
         }
     }
 }
@@ -54,6 +72,35 @@ export default {
     position: relative;
     font-size: 14px;
     display: inline-block;
+}
+.ya-input__suffix-inner {
+    pointer-events: all;
+}
+.ya-input--suffix {
+    .ya-input__inner {
+        padding-right: 30px;
+    }
+    .ya-input__suffix {
+        position: absolute;
+        height: 100%;
+        right: 5px;
+        top: 0;
+        text-align: center;
+        color: #c0c4cc;
+        transition: all .3s;
+        // https://zhuanlan.zhihu.com/p/71865866
+        // pointer-events: none; 
+          i {
+            color: #c0c4cc;
+            font-size: 14px;
+            cursor: pointer;
+            transition: color .2s cubic-bezier(.645, .045,.355, 1);
+        }
+    }
+}
+.ya-input__icon {
+    width: 25px;
+    line-height: 40px;
 }
 .ya-input__inner {
     -webkit-appearance: none;
