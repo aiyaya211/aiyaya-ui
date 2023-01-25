@@ -4,7 +4,7 @@
         class="ya-input__inner" 
         :class="{'is-disabled': disabled}"
         :placeholder="placeholder"
-        :type="type"
+        :type="showPassword? (isShowPassword? 'text' : 'password'): type"
         :disabled="disabled"
         :name="name"
         :value="value"
@@ -12,7 +12,11 @@
         />
         <span class="ya-input__suffix" v-if="showIcon">
             <i v-if="clearable && value" class="ya-icon-qingchu ya-input__icon"  @click="clearContent"/>
-            <i v-if="showPassword" class="ya-input__icon ya-icon-yanjing_yincang_o"/>
+            <i 
+                v-if="showPassword && type === 'password'" 
+                class="ya-input__icon ya-icon-yanjing_yincang_o" 
+                :class="{'ya-icon-yanjing_yincang_o_active': isShowPassword}"
+                @click="changeType"/>
         </span>
     </div>
 </template>
@@ -49,11 +53,15 @@ export default {
             default: false,
         }
     },
+    data() {
+        return {
+            isShowPassword: false, // 控制类型是否为密码类型
+        }
+    },
     computed: {
         showIcon() {
             return this.clearable || this.showPassword;
         }
-
     },
     methods: {
         changeVal(e) {
@@ -63,6 +71,9 @@ export default {
             console.log('clearContent')
             // 清空数据
             this.$emit('input', '')
+        },
+        changeType() {
+            this.isShowPassword = !this.isShowPassword;
         }
     }
 }
@@ -91,11 +102,14 @@ export default {
         // https://zhuanlan.zhihu.com/p/71865866
         // pointer-events: none; 
           i {
-            color: #c0c4cc;
+            // color: #c0c4cc;
             font-size: 14px;
             cursor: pointer;
             transition: color .2s cubic-bezier(.645, .045,.355, 1);
         }
+    }
+    .ya-icon-yanjing_yincang_o_active {
+        color: blue
     }
 }
 .ya-input__icon {

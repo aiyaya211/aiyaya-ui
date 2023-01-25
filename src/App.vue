@@ -55,7 +55,7 @@
     <!-- 输入框 -->
     <div class="row">
       <ya-input placeholder="试一试" v-model="content" clearable />
-      <ya-input placeholder="试一试" v-model="passwordContent" showPassword />
+      <ya-input placeholder="试一试" v-model="passwordContent" showPassword type="password"/>
     </div>
   </div>
 </template>
