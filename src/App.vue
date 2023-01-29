@@ -61,7 +61,8 @@
       <ya-switch 
       v-model="show"
       active-color="green"
-      inactive-color="#ff4949">
+      inactive-color="#ff4949"
+      name="choose">
       </ya-switch>
     </div>
   </div>

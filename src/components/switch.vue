@@ -1,10 +1,16 @@
 <template>
-    <label class="ya-switch" :class="{'is-checked': value}" :value="value" @click="handleClick">
+    <div class="ya-switch" :class="{'is-checked': value}" :value="value" @click="handleClick">
+        <input
+         class="ya-switch__input"
+         type="checkbox"
+         :name="name"
+         ref="input"
+        />
         <span class="ya-switch__core" ref="core">
             <!-- 小圆点 -->
             <span class="ya-switch__button"></span>
         </span>
-    </label>
+    </div>
 </template>
 <script>
 export default {
@@ -21,6 +27,10 @@ export default {
         inactiveColor: {
             type: String,
             default: ''
+        },
+        name: {
+            type: String,
+            default: ''
         }
 
 //         active-color="#13ce66"
@@ -28,10 +38,13 @@ export default {
     },
     mounted() {
         this.changeColor();
+        this.$$refs.input.checked = this.value;
     },
     watch: {
         value() {
             this.changeColor();
+            // checked 设置或返回 checkbox 是否应被选中。
+            this.$refs.input.checked = this.value;
         }
     },
     methods: {
@@ -58,6 +71,13 @@ export default {
     line-height: 20px;
     height: 20px;
     vertical-align: middle;
+    .ya-switch__input {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        margin: 0;
+    }
     .ya-switch__core {
         margin: 0;
         display: inline-block;
