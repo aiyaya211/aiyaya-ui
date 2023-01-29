@@ -38,7 +38,7 @@ export default {
     },
     mounted() {
         this.changeColor();
-        this.$$refs.input.checked = this.value;
+        this.$refs.input.checked = this.value;
     },
     watch: {
         value() {

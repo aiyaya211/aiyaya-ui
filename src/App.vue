@@ -65,6 +65,10 @@
       name="choose">
       </ya-switch>
     </div>
+    <div class="row">
+      <ya-radio label="1" v-model="gender">男</ya-radio>
+      <ya-radio label="0" v-model="gender">女</ya-radio>
+    </div>
   </div>
 </template>
 
@@ -78,6 +82,7 @@ export default {
       content: '888',
       passwordContent: '',
       show: false,
+      gender: 1,
     }
   },
   methods: {
