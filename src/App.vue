@@ -57,6 +57,9 @@
       <ya-input placeholder="试一试" v-model="content" clearable />
       <ya-input placeholder="试一试" v-model="passwordContent" showPassword type="password"/>
     </div>
+    <div class="row">
+      <ya-switch></ya-switch>
+    </div>
   </div>
 </template>
 
