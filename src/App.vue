@@ -58,7 +58,11 @@
       <ya-input placeholder="试一试" v-model="passwordContent" showPassword type="password"/>
     </div>
     <div class="row">
-      <ya-switch></ya-switch>
+      <ya-switch 
+      v-model="show"
+      active-color="green"
+      inactive-color="#ff4949">
+      </ya-switch>
     </div>
   </div>
 </template>
@@ -71,7 +75,8 @@ export default {
     return {
       visible: false,
       content: '888',
-      passwordContent: ''
+      passwordContent: '',
+      show: false,
     }
   },
   methods: {

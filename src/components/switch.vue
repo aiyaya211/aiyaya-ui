@@ -1,12 +1,52 @@
 <template>
-    <div class="ya-switch">
-        <input type="checkbox" />
-        <span class="ya-switch__core"></span>
-    </div>
+    <label class="ya-switch" :class="{'is-checked': value}" :value="value" @click="handleClick">
+        <span class="ya-switch__core" ref="core">
+            <!-- 小圆点 -->
+            <span class="ya-switch__button"></span>
+        </span>
+    </label>
 </template>
 <script>
 export default {
     name: 'YaSwitch',
+    props: {
+        value: {
+            type: Boolean,
+            default: false,
+        },
+        activeColor: {
+            type: String,
+            default: '',
+        },
+        inactiveColor: {
+            type: String,
+            default: ''
+        }
+
+//         active-color="#13ce66"
+//   inactive-color="#ff4949"
+    },
+    mounted() {
+        this.changeColor();
+    },
+    watch: {
+        value() {
+            this.changeColor();
+        }
+    },
+    methods: {
+        handleClick() {
+            this.$emit('input', !this.value);
+        },
+        changeColor() {
+            if (this.activeColor || this.inactiveColor) {
+                let color = this.value? this.activeColor : this.inactiveColor;
+                console.log(888)
+                this.$refs.core.style.borderColor = color;
+                this.$refs.core.style.background = color;
+            }
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -32,6 +72,25 @@ export default {
         cursor: pointer;
         transition: border-color .3s,background-color .3s;
         vertical-align: middle;
+        .ya-switch__button {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            border-radius: 100%;
+            transition: all .3s;
+            width: 16px;
+            height: 16px;
+            background: #fff;
+        }
+    }
+}
+.ya-switch.is-checked {
+    .ya-switch__core {
+        border-color: #409eff;
+        background: #409eff;
+        .ya-switch__button {
+            transform: translateX(20px);
+        }
     }
 }
 </style>
