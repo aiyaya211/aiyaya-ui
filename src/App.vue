@@ -66,6 +66,7 @@
       </ya-switch>
     </div>
     <div class="row">
+      <!-- 点击选择某个radio之后要修改父组件的值 -->
       <ya-radio label="1" v-model="gender">男</ya-radio>
       <ya-radio label="0" v-model="gender">女</ya-radio>
     </div>
@@ -82,7 +83,7 @@ export default {
       content: '888',
       passwordContent: '',
       show: false,
-      gender: 1,
+      gender: '1',
     }
   },
   methods: {

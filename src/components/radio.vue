@@ -1,8 +1,14 @@
 <template>
-    <label class="ya-radio is_checked">
+    <label class="ya-radio is-checked">
         <span class="ya-radio__input">
             <span class="ya-radio__inner"></span>
-            <input type="radio" class="ya-radio__original" :value="value" />
+            <input 
+            type="radio" 
+            class="ya-radio__original" 
+            :value="value" 
+            :name="name"
+            v-model="value"
+            />
         </span>
         <span class="ya-radio__label">
             <slot></slot>
@@ -17,15 +23,14 @@ export default {
     name: 'YaRadio',
     props: {
         value: {
-            type: String,
-            default: ''
+            type: null,
         },
         label: {
             type: [String, Number, Boolean],
             default: ''
         },
         name: {
-            type: string,
+            type: String,
             default: ''
         }
     },
@@ -67,6 +72,18 @@ export default {
             cursor: pointer;
             display: inline-block;
             box-sizing: border-box;
+            &:after {
+                width: 4px;
+                height: 4px;
+                border-radius: 100%;
+                background: #fff;
+                content: '';
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%) scale(0);
+                transition: transform .15s ease-in;
+            }
         }
         .ya-radio__original {
             opacity: 0;
@@ -85,7 +102,7 @@ export default {
         padding-left: 10px;
     }
 }
-.ya-radio.is_checked {
+.ya-radio.is-checked {
     .ya-radio__input {
         .ya-radio__inner {
             border-color: #409eff;
@@ -93,7 +110,7 @@ export default {
             &:after {
                 // 按照x轴和y轴平移
                 // 缩放
-                transform: translate(-50%, -50%) scale(1); 
+                transform: translate(-50%,-50%) scale(1); 
             }
         }
     }
