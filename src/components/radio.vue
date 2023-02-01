@@ -1,13 +1,13 @@
 <template>
-    <label class="ya-radio is-checked">
+    <label class="ya-radio" :class="{'is-checked': label === myValue}">
         <span class="ya-radio__input">
             <span class="ya-radio__inner"></span>
             <input 
             type="radio" 
             class="ya-radio__original" 
-            :value="value" 
+            :value="label" 
             :name="name"
-            v-model="value"
+            v-model="myValue"
             />
         </span>
         <span class="ya-radio__label">
@@ -21,7 +21,22 @@
 <script>
 export default {
     name: 'YaRadio',
+    // 主要为了input双向绑定value
+    computed: {
+        // 双向绑定
+       myValue: {
+           // 获取值
+           get() {
+               return this.value;
+           },
+           // 更新修改值
+           set(value) {
+               this.$emit('input', value)
+           }
+       } 
+    },
     props: {
+        // 父组件双向绑定的值
         value: {
             type: null,
         },

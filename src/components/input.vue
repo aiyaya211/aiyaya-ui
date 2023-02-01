@@ -1,5 +1,6 @@
 <template>
     <div class="ya-input" :class="{'ya-input--suffix': showIcon}">
+        <!-- v-model双向绑定 -->
         <input 
         class="ya-input__inner" 
         :class="{'is-disabled': disabled}"
@@ -64,6 +65,7 @@ export default {
         }
     },
     methods: {
+        // 子组件修改父组件
         changeVal(e) {
             this.$emit('input', e.target.value)
         },
