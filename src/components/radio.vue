@@ -27,13 +27,27 @@ export default {
        myValue: {
            // 获取值
            get() {
-               return this.value;
+               return this.hasGroup? this.RadioGroup.value : this.value;
            },
            // 更新修改值
            set(value) {
-               this.$emit('input', value)
+               console.log(this.RadioGroup)
+               this.hasGroup? this.RadioGroup.$emit('input', value) : this.$emit('input', value)
            }
-       } 
+       },
+       // 判断有没有被group包裹
+       hasGroup() {
+           // 转换为boolean
+           return !!this.RadioGroup;
+       }
+    },
+//      inject: {
+//     foo: { default: 'foo' }
+//   }
+    inject: {
+        RadioGroup: {
+            default: '' 
+        }
     },
     props: {
         // 父组件双向绑定的值

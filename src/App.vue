@@ -70,6 +70,13 @@
       <ya-radio label="1" v-model="gender">男</ya-radio>
       <ya-radio label="0" v-model="gender">女</ya-radio>
     </div>
+    <div>
+      <!-- 选框组 -->
+      <ya-radio-group  v-model="fruit">
+        <ya-radio label="orange">橘子</ya-radio>
+        <ya-radio label="apple">苹果</ya-radio>
+      </ya-radio-group>
+    </div>
   </div>
 </template>
 
@@ -84,6 +91,7 @@ export default {
       passwordContent: '',
       show: false,
       gender: '1',
+      fruit: 'apple'
     }
   },
   methods: {
