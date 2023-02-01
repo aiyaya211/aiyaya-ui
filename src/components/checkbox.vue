@@ -6,6 +6,7 @@
             type="checkbox" 
             class="ya-checkbox__original"
             :value="label"
+            :name="name"
             v-model="checkStatus">
         </span>
         <span class="ya-checkbox__label">
@@ -30,6 +31,10 @@ export default {
             type: String,
             default: ''
         },
+        name: {
+            type: String,
+            default: ''
+        }
     },
     inject: {
         CheckboxGroup: {
@@ -39,7 +44,7 @@ export default {
     computed: {
         checkStatus: {
             get() {
-                console.log(this.CheckboxGroup.value)
+                // console.log(this.CheckboxGroup.value)
                 return this.hasGroup? this.CheckboxGroup.value : this.value
             },
             set(value) {

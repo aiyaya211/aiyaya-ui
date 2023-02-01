@@ -88,6 +88,22 @@
           <ya-checkbox label="复选框 C"></ya-checkbox>
       </ya-checkbox-group>
     </div>
+    <div class="row">
+      <ya-form :model="form">
+        <ya-form-item label="姓名">
+           <ya-input placeholder="姓名" clearable v-model="form.name"/>
+        </ya-form-item>
+        <ya-form-item label="性别">
+          <ya-radio-group v-model="form.gender">
+            <ya-radio label="male">男</ya-radio>
+            <ya-radio label="female">女</ya-radio>
+          </ya-radio-group>
+        </ya-form-item>
+        <ya-form-item label="年龄">
+           <ya-input placeholder="年龄" clearable  v-model="form.age" />
+        </ya-form-item>
+      </ya-form>
+    </div>
 
   </div>
 </template>
@@ -105,7 +121,8 @@ export default {
       gender: '1',
       fruit: 'apple',
       checked: true,
-      checkList: []
+      checkList: [],
+      form: {}
     }
   },
   methods: {

@@ -8,6 +8,8 @@ import YaRadio from './components/radio.vue'
 import YaRadioGroup from './components/radio-group.vue'
 import YaCheckbox from './components/checkbox.vue'
 import YaCheckboxGroup from './components/checkbox-group.vue'
+import YaForm from './components/form.vue'
+import YaFormItem from './components/form-item.vue'
 import './assets/fonts/font.scss'
 
 Vue.config.productionTip = false
@@ -19,6 +21,8 @@ Vue.component(YaRadio.name, YaRadio)
 Vue.component(YaRadioGroup.name, YaRadioGroup)
 Vue.component(YaCheckbox.name, YaCheckbox)
 Vue.component(YaCheckboxGroup.name, YaCheckboxGroup)
+Vue.component(YaForm.name, YaForm)
+Vue.component(YaFormItem.name, YaFormItem)
 
 new Vue({
   render: h => h(App),
