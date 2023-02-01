@@ -1,15 +1,20 @@
 <template>
-    <label class="ya-checkbox" :class="{'is-checked': value}">
+    <label class="ya-checkbox" :class="{'is-checked': hasGroup? checkStatus.includes(label) : !!value }">
         <span class="ya-checkbox__input">
             <span class="ya-checkbox__inner"></span>
             <input 
             type="checkbox" 
             class="ya-checkbox__original"
-            :value="value"
+            :value="label"
             v-model="checkStatus">
         </span>
         <span class="ya-checkbox__label">
-            <slot></slot>
+            <template v-if="!$slots.default">
+                {{ label }}
+            </template>
+            <template v-else>
+                 <slot></slot>
+            </template>
         </span>
     </label>
 </template>
@@ -20,16 +25,33 @@ export default {
         value: {
             type: Boolean,
             default: false
+        },
+        label: {
+            type: String,
+            default: ''
+        },
+    },
+    inject: {
+        CheckboxGroup: {
+            default: '' 
         }
     },
     computed: {
         checkStatus: {
             get() {
-                return this.value
+                console.log(this.CheckboxGroup.value)
+                return this.hasGroup? this.CheckboxGroup.value : this.value
             },
             set(value) {
-                this.$emit('input', value)
+                if(this.hasGroup) {
+                    this.CheckboxGroup.$emit('input', value) 
+                } else {
+                    this.$emit('input', value)
+                }
             }
+        },
+        hasGroup() {
+            return !!this.CheckboxGroup;
         }
     }
 
@@ -66,12 +88,25 @@ export default {
             z-index: 1;
             transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46);
             &:after {
-                transform: rotate(45deg) scaleY(1);
+                box-sizing: content-box;
+                content: "";
+                border: 1px solid #fff;
+                border-left: 0;
+                border-top: 0;
+                height: 7px;
+                left: 4px;
+                position: absolute;
+                top: 1px;
+                transform: rotate(45deg) scaleY(0);
+                width: 3px;
+                transition: transform .15s ease-in .05s;
+                transform-origin: center;
             }
         }
         .ya-checkbox__original {
             opacity: 0;
             outline: none;
+            left: 10px;
             position: absolute;
             margin: 0;
             width: 0;

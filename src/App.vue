@@ -78,7 +78,15 @@
       </ya-radio-group>
     </div>
     <div class="row">
-      <ya-checkbox  v-model="checked">7777</ya-checkbox>
+      <!-- checkbox和radio很像 -->
+      <ya-checkbox  v-model="checked" label="测试"></ya-checkbox>
+    </div>
+    <div class="row">
+      <ya-checkbox-group v-model="checkList">
+          <ya-checkbox label="复选框 A"></ya-checkbox>
+          <ya-checkbox label="复选框 B"></ya-checkbox>
+          <ya-checkbox label="复选框 C"></ya-checkbox>
+      </ya-checkbox-group>
     </div>
 
   </div>
@@ -96,7 +104,8 @@ export default {
       show: false,
       gender: '1',
       fruit: 'apple',
-      checked: true
+      checked: true,
+      checkList: []
     }
   },
   methods: {
