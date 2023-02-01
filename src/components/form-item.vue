@@ -1,6 +1,6 @@
 <template>
     <div class="ya-form-item">
-        <span class="ya-form-item__label">{{label}}</span>
+        <span class="ya-form-item__label" :style="{width: this.Form.labelWidth}">{{label}}</span>
         <div class="ya-form-item__content">
             <slot></slot>
         </div>
@@ -14,7 +14,8 @@ export default {
            type: String,
            default: ''
        } 
-    }
+    },
+    inject: ['Form']
 }
 </script>
 <style lang="scss" scoped>

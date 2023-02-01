@@ -89,7 +89,7 @@
       </ya-checkbox-group>
     </div>
     <div class="row">
-      <ya-form :model="form">
+      <ya-form :model="form" label-width="50px">
         <ya-form-item label="姓名">
            <ya-input placeholder="姓名" clearable v-model="form.name"/>
         </ya-form-item>
