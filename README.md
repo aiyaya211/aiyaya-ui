@@ -56,6 +56,8 @@ Vue.use(YaUI)
 | width | 对话框宽度 | string| -|
 | top | 距离顶部的高度 | string | -|
 | visible | 是否显示 Dialog，支持 .sync 修饰符 | boolean | false |
+
+
 **slot**
 | 参数     | 说明     | 
 | -------- | -------- |
