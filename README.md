@@ -66,3 +66,16 @@ Vue.use(YaUI)
 | footer |底部插槽 | 
 
 
+#### Input输入框
+**Attributes**
+| 参数     | 说明     | 类型     | 可选值    |
+| -------- | -------- | -------- |-------- |
+| placeholder |输入框占位文本 | string |  -|
+| type | 类型 | string| text，textarea 和其他 原生 input 的 type 值|
+| disabled | 禁用 | boolean | true / false|
+| name | 原生属性 | string | - |
+| clearable | 是否可清空输入框内容 | boolean | true / false |
+| showPassword | 是否明文展示密码 | boolean | true / false |
+
+
+
