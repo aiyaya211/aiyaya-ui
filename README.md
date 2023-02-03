@@ -78,4 +78,34 @@ Vue.use(YaUI)
 | showPassword | 是否明文展示密码 | boolean | true / false |
 
 
+#### Switch开关
+**Attributes**
+| 参数     | 说明     | 类型     | 可选值    |
+| -------- | -------- | -------- |-------- |
+| activeColor |switch 打开时的背景色 | string |  -|
+| inactive-color | switch 关闭时的背景色 | string| -|
+| name | 原生属性 | string | - |
 
+
+#### Radio单选框
+**Attributes**
+| 参数     | 说明     | 类型     | 可选值    |
+| -------- | -------- | -------- |-------- |
+| label |Radio 的 value | string / number / boolean |  -|
+| name | 原生属性 | string | - |
+
+
+#### Checkbox多选框
+**Attributes**
+| 参数     | 说明     | 类型     | 可选值    |
+| -------- | -------- | -------- |-------- |
+| label |选中状态的值 | string / number / boolean |  -|
+| name | 原生属性 | string | - |
+
+
+#### Form表单
+**Attributes**
+| 参数     | 说明     | 类型     | 可选值    |
+| -------- | -------- | -------- |-------- |
+| label-width |表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。 | string / number / boolean |  -|
+| model | 表单数据对象 | object | - |
